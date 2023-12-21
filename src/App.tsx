@@ -11,8 +11,8 @@ function App() {
   }
 
   return (
-    <Container sx={{display : 'flex', alignItems : 'center', justifyContent :'center', height :'100vh', width : '100%' }}>
-      <Paper sx={{p: 4, width : '600px'}}>
+    <Container sx={{display : 'flex', alignItems : 'center', justifyContent :'center', height :'100vh', width : '100vh',  }}>
+      <Paper sx={{p: 4, width : '600px', bgcolor:'#f9fafb'}}>
         <Stack>
           <Stack alignSelf={'center'}>
             <Typography variant={'h4'} sx={{p :1}}>
