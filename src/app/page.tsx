@@ -1,43 +1,43 @@
 "use client"
-import { Paper, Stack, Typography, TextField, Container, Button } from '@mui/material';
+import { Paper, Stack, Typography, TextField, Container, Button, Grid } from '@mui/material';
 import { useState } from 'react';
 
 export default function Home() {
   const [url, setUrl] = useState<string>('')
   const [shortUrl, setShortUrl] = useState<string>('')
-  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e : any) => {
     setUrl(e.target.value);
-    setShortUrl(e.target.value)
+    // setShortUrl(e.target.value)
   }
 
   return (
-    <Container sx={{display : 'flex', alignItems : 'center', justifyContent :'center', height :'100vh', width : '100vh'}}>
+    <Container  sx={{display : 'flex', alignItems : 'center', justifyContent :'center', height :'100vh', width : '100vh'}}>
       <Stack>
         <Stack alignSelf={'center'}>
-          <Typography variant={'h4'} sx={{p :1}}>
-            Welcome to the url shortner
+          <Typography variant={'h4'} sx={{p :1}} className='text-5xl font-extrabold font-serif bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent text-center'>
+            Welcome to ShrinkIT🔗
           </Typography>
         </Stack>
         <Paper sx={{p: 4, bgcolor:'#f9fafb'}}>
-          <Stack>
-            <Stack maxWidth='sm' spacing={2}>
-              <Stack direction={'row'} spacing={1} justifyContent={'space-between'}>
-                <TextField label='Enter Url' onChange={(e:React.ChangeEvent<HTMLInputElement>) => (handleChange(e))} value={url} sx={{width : 1}}/>
-                <Button variant={'outlined'}>Shorten URL</Button>
-              </Stack>
-              <Stack direction={'row'} spacing={1} justifyContent={'space-between'}>
-                <TextField label='Get Your Shortened URL here' value={shortUrl} sx={{width : 1}} disabled/>
-                <Button variant={'outlined'} >Copy URL</Button>
-              </Stack>
-            </Stack>
-          </Stack>
+          <Grid container spacing={2}>
+            <Grid item xs={8}>
+              <TextField label='Enter Url' variant={'outlined'} onChange={(e:any) => (handleChange(e))} value={url} sx={{width : 1}}/>
+            </Grid>
+            <Grid item xs={4}>
+              <Button variant={'contained'} sx={{height : 1, width : 1}}>Shorten URL</Button>
+            </Grid>
+            <Grid item xs={8}>
+              <TextField label='Get Your Shortened URL here' value={shortUrl} sx={{width : 1}} />
+            </Grid>
+            <Grid item xs={4}>
+              <Button variant={'contained'} sx={{height : 1, width : 1}} >Copy URL</Button>
+            </Grid>
+          </Grid>
         </Paper>
       </Stack>
     </Container> 
   )
 }
-
-
 
 
 
