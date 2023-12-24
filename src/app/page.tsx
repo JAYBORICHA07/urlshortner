@@ -1,14 +1,20 @@
 "use client"
 import { Paper, Stack, Typography, TextField, Container, Button, Grid } from '@mui/material';
-import { useState } from 'react';
+import { FormEventHandler, useEffect, useState } from 'react';
 
 export default function Home() {
   const [url, setUrl] = useState<string>('')
   const [shortUrl, setShortUrl] = useState<string>('')
-  const handleChange = (e : any) => {
-    setUrl(e.target.value);
-    // setShortUrl(e.target.value)
+  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+      setUrl(e.target.value)
   }
+  const handleCopy = (e : any) => {
+    navigator.clipboard.writeText(url).then((e) => (console.log("Text Copied")));
+  } 
+
+  useEffect(()=>{
+    console.log(url)
+  },[url])
 
   return (
     <Container  sx={{display : 'flex', alignItems : 'center', justifyContent :'center', height :'100vh'}}>
@@ -21,16 +27,16 @@ export default function Home() {
         <Paper sx={{p: 4, bgcolor:'#f9fafb'}}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={8}>
-              <TextField label='Enter Url' variant={'outlined'} onChange={(e:any) => (handleChange(e))} value={url} sx={{width : 1}}/>
+              <TextField label='Enter Url' variant={'outlined'} onChange={(e:React.ChangeEvent<HTMLInputElement>) => (handleChange(e))} value={url} sx={{width : 1}}/>
             </Grid>
             <Grid item xs={12} md={4}>
               <Button variant={'contained'} sx={{height : 1, width : 1}}>Shorten URL</Button>
             </Grid>
             <Grid item xs={12} md={8}>
-              <TextField label='Get Your Shortened URL here' value={shortUrl} sx={{width : 1}} />
+              <TextField label='Get Your Shortened URL here' value={shortUrl} sx={{width : 1}}  disabled/>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Button variant={'contained'} sx={{height : 1, width : 1}} >Copy URL</Button>
+              <Button variant={'contained'} sx={{height : 1, width : 1}} onChange={(e : any)=>(handleCopy(e))}>Copy URL</Button>
             </Grid>
           </Grid>
         </Paper>
