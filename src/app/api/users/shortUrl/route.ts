@@ -20,7 +20,7 @@ export async function POST(request : NextRequest, response : NextResponse){
         return NextResponse.json({
             messege : "path is working",
             sucess : true,
-            shortUrl : `https://minilinkr.vercel.app/${postFix}`
+            shortUrl : `minilinkr.vercel.app/${postFix}`
         });
     } catch (error) {
         console.log("error sending request", error);
