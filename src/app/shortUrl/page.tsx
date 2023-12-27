@@ -12,6 +12,7 @@ export default function Home() {
   const handleShortenUrl = async (e: React.MouseEvent<HTMLElement>) => {
     const response = await axios.post('/api/users/shortUrl', {url});
     console.log(response.data.shortUrl);
+    setShortUrl(response.data.shortUrl)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

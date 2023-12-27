@@ -11,7 +11,7 @@ export async function POST(request : NextRequest, response : NextResponse){
         const body = await request
         const reqBody = await request.json();
         const {url} = reqBody;
-        console.log(url); 
+        // console.log(url); 
 
         const dataEntry = await urlSchema.create({full : url});
         const postFix: string = dataEntry.short;
@@ -20,7 +20,7 @@ export async function POST(request : NextRequest, response : NextResponse){
         return NextResponse.json({
             messege : "path is working",
             sucess : true,
-            shortUrl : `minilinkr.vercel.app/${postFix}`
+            shortUrl : `https://minilinkr.vercel.app/${postFix}`
         });
     } catch (error) {
         console.log("error sending request", error);

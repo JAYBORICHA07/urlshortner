@@ -1,12 +1,11 @@
-"use client"
-import { Container} from '@mui/material';
-export default function Home() {
+"use server"
+import urlSchema from "@/models/shortUrl";
+import { redirect } from 'next/navigation'
 
-
-
-  return (
-    <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <h1>Hello</h1>
-    </Container>
-  )
+export default async function GET(req : any){
+  const shortid =  req.params.id
+  console.log(shortid);
+  const dataObj = await urlSchema.findOne({short : shortid})
+  const fullUrl = dataObj.full
+  redirect(fullUrl);
 }
