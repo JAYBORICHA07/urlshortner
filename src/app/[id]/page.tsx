@@ -8,5 +8,6 @@ export default async function GET(req : any){
   const dataObj = await urlSchema.findOne({short : shortid})
   const fullUrl = dataObj.full
   console.log("full url" + fullUrl)
+  console.log("full url" + fullUrl)
   redirect(fullUrl);
 }
