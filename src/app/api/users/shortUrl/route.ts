@@ -17,11 +17,11 @@ export async function POST(request : NextRequest, response : NextResponse){
         const postFix: string = dataEntry.short;
 
         console.log("postFix = ");
-        console.log(`short url  =  minilinkr.vercel.app/${postFix}`)
+        console.log(`short url  =  minilinker.netlify.app/${postFix}`)
         return NextResponse.json({
             messege : "path is working",
             sucess : true,
-            shortUrl : `minilinkr.vercel.app/${postFix}`
+            shortUrl : `minilinker.netlify.app/${postFix}`
         });
     } catch (error) {
         console.log("error sending request", error);
